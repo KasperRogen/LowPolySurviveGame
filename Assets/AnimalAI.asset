@@ -1,0 +1,96 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34a7c8ca992f915438a96c2077353778, type: 3}
+  m_Name: AnimalAI
+  m_EditorClassIdentifier: 
+  brickName: Assets/AnimalAI.asset
+  xml: "\uFEFF<?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<BehaviorBricks xmlns:ref=\"urn:padaone\"
+    version=\"1.0\">\r\n  <BehaviorTree id=\"0\" />\r\n  <runtimeInfo>\r\n    <BehaviorTree
+    id=\"0\" guid=\"a6e8683d44c21154ea53b73fda08cbd6\" nextId=\"21\">\r\n      <root>\r\n
+    \       <SubbehaviorNode id=\"1\" />\r\n      </root>\r\n      <inputParams>\r\n
+    \       <inputValues>\r\n          <entry name=\"closeDistance\" type=\"System.Single\"
+    isBlackboard=\"False\" value=\"0\" />\r\n        </inputValues>\r\n      </inputParams>\r\n
+    \     <outputParams />\r\n      <localParams />\r\n    </BehaviorTree>\r\n    <SubbehaviorNode
+    id=\"1\">\r\n      <_guid>58ba3f58201aab340a8d4c344493e429</_guid>\r\n      <inputParams
+    />\r\n      <outputParams />\r\n      <localParams />\r\n    </SubbehaviorNode>\r\n
+    \ </runtimeInfo>\r\n  <editorInfo>\r\n    <BehaviorTree id=\"0\" _name=\"AnimalAI\"
+    _description=\"\" _removeIfClosed=\"False\">\r\n      <_rootList>\r\n        <elem>\r\n
+    \         <PrioritySelectorNode id=\"5\" />\r\n        </elem>\r\n        <elem>\r\n
+    \         <SubbehaviorNode id=\"16\" />\r\n        </elem>\r\n        <elem>\r\n
+    \         <ConditionEvalNode id=\"17\" />\r\n        </elem>\r\n        <elem>\r\n
+    \         <ActionNode id=\"18\" />\r\n        </elem>\r\n        <elem>\r\n          <ConditionEvalNode
+    id=\"19\" />\r\n        </elem>\r\n      </_rootList>\r\n      <_nodes>\r\n        <nodes>\r\n
+    \         <PrioritySelectorNode id=\"5\" />\r\n          <SubbehaviorNode id=\"16\"
+    />\r\n          <ConditionEvalNode id=\"17\" />\r\n          <ActionNode id=\"18\"
+    />\r\n          <ConditionEvalNode id=\"19\" />\r\n        </nodes>\r\n      </_nodes>\r\n
+    \   </BehaviorTree>\r\n    <SubbehaviorNode id=\"1\">\r\n      <_data>\r\n        <data
+    breakpoint=\"0\" selected=\"False\" position=\"590.9619 288.4167\" name=\"Roam\"
+    description=\"\" cardinality=\"-1\" hasParent=\"False\">\r\n          <BehaviorTree
+    id=\"1\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n
+    \ </editorInfo>\r\n  <runtimeInfo>\r\n    <PrioritySelectorNode id=\"5\">\r\n
+    \     <children>\r\n        <elem>\r\n          <GuardAndNode>\r\n            <guard>\r\n
+    \             <ConditionEvalNode id=\"19\" />\r\n            </guard>\r\n            <child>\r\n
+    \             <ActionNode id=\"18\" />\r\n            </child>\r\n          </GuardAndNode>\r\n
+    \       </elem>\r\n        <elem>\r\n          <GuardAndNode>\r\n            <guard>\r\n
+    \             <ConditionEvalNode id=\"17\" />\r\n            </guard>\r\n            <child>\r\n
+    \             <SubbehaviorNode id=\"16\" />\r\n            </child>\r\n          </GuardAndNode>\r\n
+    \       </elem>\r\n      </children>\r\n      <inputParams />\r\n      <outputParams
+    />\r\n      <localParams />\r\n    </PrioritySelectorNode>\r\n    <SubbehaviorNode
+    id=\"16\">\r\n      <_guid>02ce196a681aa754ba7329506b9ec94a</_guid>\r\n      <inputParams>\r\n
+    \       <inputValues>\r\n          <entry name=\"target\" type=\"UnityEngine.GameObject\"
+    isBlackboard=\"False\" />\r\n          <entry name=\"smellingDistance\" type=\"System.Single\"
+    isBlackboard=\"True\" blackboard=\"smellingDistance\" />\r\n          <entry name=\"closeDistance\"
+    type=\"System.Single\" isBlackboard=\"True\" blackboard=\"closeDistance\" />\r\n
+    \       </inputValues>\r\n      </inputParams>\r\n      <outputParams />\r\n      <localParams
+    />\r\n    </SubbehaviorNode>\r\n    <ConditionEvalNode id=\"17\" policy=\"ATOMIC_CHECK\"
+    name=\"MyConditions/IsHungry\">\r\n      <inputParams />\r\n      <outputParams
+    />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n    <ActionNode id=\"18\"
+    action=\"Samples/ProgQuickStartGuide/SleepForever\">\r\n      <inputParams />\r\n
+    \     <outputParams />\r\n      <localParams />\r\n    </ActionNode>\r\n    <ConditionEvalNode
+    id=\"19\" policy=\"ATOMIC_CHECK\" name=\"AlwaysTrue\">\r\n      <inputParams />\r\n
+    \     <outputParams />\r\n      <localParams />\r\n    </ConditionEvalNode>\r\n
+    \   <BehaviorTree id=\"1\" nextId=\"1\">\r\n      <inputParams />\r\n      <outputParams
+    />\r\n      <localParams />\r\n    </BehaviorTree>\r\n  </runtimeInfo>\r\n  <editorInfo>\r\n
+    \   <PrioritySelectorNode id=\"5\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"489.1081 142.25\" name=\"Priority Selector\" description=\"\"
+    cardinality=\"1\" hasParent=\"False\">\r\n          <BehaviorTree id=\"20\" />\r\n
+    \       </data>\r\n      </_data>\r\n    </PrioritySelectorNode>\r\n    <SubbehaviorNode
+    id=\"16\">\r\n      <_data>\r\n        <data breakpoint=\"0\" selected=\"False\"
+    position=\"465.7015 274.6111\" name=\"SeekFood\" description=\"\" cardinality=\"-1\"
+    hasParent=\"False\">\r\n          <BehaviorTree id=\"0\" />\r\n          <SubbehaviorNode
+    id=\"16\" />\r\n        </data>\r\n      </_data>\r\n    </SubbehaviorNode>\r\n
+    \   <ConditionEvalNode id=\"17\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"504.5904 307.5739\" name=\"MyConditions/IsHungry\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
+    id=\"20\" />\r\n          <ConditionEvalNode id=\"17\" />\r\n          <PrioritySelectorNode
+    id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n
+    \   <ActionNode id=\"18\">\r\n      <_data>\r\n        <data breakpoint=\"0\"
+    selected=\"False\" position=\"249.0349 272.3887\" name=\"Samples/ProgQuickStartGuide/SleepForever\"
+    description=\"Low-cost infinite action that never ends. It does not consume CPU
+    at all.\" cardinality=\"0\" hasParent=\"False\">\r\n          <BehaviorTree id=\"0\"
+    />\r\n          <ActionNode id=\"18\" />\r\n        </data>\r\n      </_data>\r\n
+    \   </ActionNode>\r\n    <ConditionEvalNode id=\"19\">\r\n      <_data>\r\n        <data
+    breakpoint=\"0\" selected=\"False\" position=\"261.6275 309.7961\" name=\"AlwaysTrue\"
+    description=\"Eval\" cardinality=\"1\" hasParent=\"True\">\r\n          <BehaviorTree
+    id=\"20\" />\r\n          <ConditionEvalNode id=\"19\" />\r\n          <PrioritySelectorNode
+    id=\"5\" />\r\n        </data>\r\n      </_data>\r\n    </ConditionEvalNode>\r\n
+    \   <BehaviorTree id=\"1\" _removeIfClosed=\"False\">\r\n      <_rootList />\r\n
+    \     <_nodes>\r\n        <nodes />\r\n      </_nodes>\r\n    </BehaviorTree>\r\n
+    \ </editorInfo>\r\n  <runtimeInfo>\r\n    <BehaviorTree id=\"20\" nextId=\"1\">\r\n
+    \     <inputParams />\r\n      <outputParams />\r\n      <localParams />\r\n    </BehaviorTree>\r\n
+    \ </runtimeInfo>\r\n  <editorInfo>\r\n    <BehaviorTree id=\"20\" _removeIfClosed=\"False\">\r\n
+    \     <_rootList />\r\n      <_nodes>\r\n        <nodes />\r\n      </_nodes>\r\n
+    \   </BehaviorTree>\r\n  </editorInfo>\r\n</BehaviorBricks>"
+  zoom: 0.7
+  subslist:
+  - {fileID: 11400000, guid: 58ba3f58201aab340a8d4c344493e429, type: 2}
+  - {fileID: 11400000, guid: 02ce196a681aa754ba7329506b9ec94a, type: 2}
+  _guid: a6e8683d44c21154ea53b73fda08cbd6
