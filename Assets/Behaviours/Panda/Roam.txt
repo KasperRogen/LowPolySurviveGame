@@ -1,0 +1,11 @@
+tree("Root")
+	repeat
+		fallback
+			sequence 
+				PlayerCloseAndInSight(10.0, 180.0)
+				while
+					PlayerClose(20.0)
+					FleeTask(10.0, 180.0)
+			random
+				RoamTask
+				Wait 1.0

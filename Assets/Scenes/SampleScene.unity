@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -291,6 +291,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dayDuration: 10
+  <isNight>k__BackingField: 0
+  dayColor:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  nightColor:
+    r: 0.1
+    g: 0.1
+    b: 0.1
+    a: 0.1
 --- !u!1 &184999008
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,7 +603,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 345912227}
   m_LocalRotation: {x: 0, y: 0.9865722, z: -0, w: -0.16332586}
-  m_LocalPosition: {x: -18.6, y: 19.09, z: 21.6}
+  m_LocalPosition: {x: -26.4, y: 27.4, z: 7.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 534669905}
@@ -1195,7 +1206,6 @@ GameObject:
   - component: {fileID: 1679852158}
   - component: {fileID: 1679852157}
   - component: {fileID: 1679852159}
-  - component: {fileID: 1679852160}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1238,17 +1248,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ad4bc230efb1214cb2f94b16557db3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1679852160
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1679852156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dafafd1a02cd3bb4fb97bad1e24af07d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1699393967
@@ -1519,8 +1518,10 @@ GameObject:
   - component: {fileID: 2073894921}
   - component: {fileID: 2073894920}
   - component: {fileID: 2073894925}
-  - component: {fileID: 2073894919}
   - component: {fileID: 2073894926}
+  - component: {fileID: 2073894919}
+  - component: {fileID: 2073894927}
+  - component: {fileID: 2073894928}
   m_Layer: 0
   m_Name: NavmeshAgent (BB)
   m_TagString: Untagged
@@ -1536,61 +1537,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 2073894918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 422fb6956201c7944ae2113a1a53b0b8, type: 3}
+  m_Script: {fileID: 11500000, guid: 17e43e7170fb45b4b81dcd16d0ff55d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxTasksPerTick: 500
-  behavior: {fileID: 11400000, guid: a85497fbeaa807b4db8a952949f24dbc, type: 2}
-  paused: 0
-  restartWhenFinished: 1
-  blackboard:
-    intParams: 
-    intParamsNames: []
-    intParamsLostDefaultValue: 
-    boolParams: 
-    boolParamsNames: []
-    boolParamsLostDefaultValue: 
-    floatParams: []
-    floatParamsNames: []
-    floatParamsLostDefaultValue: 
-    stringParams: []
-    stringParamsNames: []
-    stringParamsLostDefaultValue: 
-    colorParams: []
-    colorParamsNames: []
-    colorParamsLostDefaultValue: 
-    objectParams: []
-    objectParamsNames: []
-    objectParamsLostDefaultValue: 
-    layerMaskParams: []
-    layerMaskParamsNames: []
-    layerMaskParamsLostDefaultValue: 
-    enumParamsNames: []
-    enumParamsLostDefaultValue: 
-    vector2Params: []
-    vector2ParamsNames: []
-    vector2ParamsLostDefaultValue: 
-    vector3Params: []
-    vector3ParamsNames: []
-    vector3ParamsLostDefaultValue: 
-    vector4Params: []
-    vector4ParamsNames: []
-    vector4ParamsLostDefaultValue: 
-    rectParams: []
-    rectParamsNames: []
-    rectParamsLostDefaultValue: 
-    animationCurveParams: []
-    animationCurveParamsNames: []
-    animationCurveParamsLostDefaultValue: 
-    boundsParams: []
-    boundsParamsNames: []
-    boundsParamsLostDefaultValue: 
-    gradientParams: []
-    gradientParamsNames: []
-    gradientParamsLostDefaultValue: 
-    quaternionParams: []
-    quaternionParamsNames: []
-    quaternionParamsLostDefaultValue: 
+  scripts:
+  - {fileID: 4900000, guid: 4356b9e3d6789b246adec9e497827ca3, type: 3}
+  autoReset: 1
+  tickOn: 0
+  sourceInfos:
+  - isFoldout: 1
+    breakPoints: 
+    breakPointStatuses: 
+    collapsedLines: 
+    btScript: 
 --- !u!195 &2073894920
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1718,6 +1677,31 @@ MonoBehaviour:
   seeingAngle: 180
   hearingDistance: 0
   smellingDistance: 15
+--- !u!114 &2073894927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073894918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4630979a53ae9634fa04fcbf7808fb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 2073894920}
+--- !u!114 &2073894928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073894918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32cc8b0f26ee4014c8886025cc11d093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 345912227}
+  agent: {fileID: 2073894920}
 --- !u!1 &2093922253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f364f00c622818a4faa92b0f8562e107,

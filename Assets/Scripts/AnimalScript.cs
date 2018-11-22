@@ -18,7 +18,7 @@ public class AnimalScript : MonoBehaviour {
     public bool IsHungry = false;
 
 
-    private BehaviorExecutor behaviour;
+
     public float health;
 
     public AnimalStates state;
@@ -38,7 +38,6 @@ public class AnimalScript : MonoBehaviour {
 	void Start () {
         vision = GetComponent<VisionScript>();
         movement = GetComponent<AIMovement>();
-        behaviour = GetComponent<BehaviorExecutor>();
 
         AnimalController.AnimalAiUpdate += BasicNeedsUpdater;
 
