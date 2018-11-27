@@ -26,8 +26,10 @@ public class Flee : MonoBehaviour {
         if (Vector3.Distance(Player.transform.position, transform.position) < radius)
         {
             Task.current.Succeed();
+            return;
         }
         Task.current.Fail();
+        Debug.Log(Vector3.Distance(transform.position, Player.transform.position));
     }
 
 
@@ -39,6 +41,7 @@ public class Flee : MonoBehaviour {
             if(IsInVision(seeingDistance, seeingAngle))
             {
                 Task.current.Succeed();
+                return;
             }
         }
 
@@ -46,10 +49,10 @@ public class Flee : MonoBehaviour {
 
     }
 
-    public Vector3 PickDestination(float fleeingDistance, float seeingAngle)
+    public Vector3 PickFleeingDestination(float fleeingDistance, float seeingAngle)
     {
         Vector3 fleeingDirection = (transform.position - Player.transform.position);
-        Vector3 destination = PickDestination(fleeingDistance, seeingAngle);
+        Vector3 destination = PickDestination(10);
         Vector3 newDirection = (destination - transform.position).normalized;
 
 
@@ -57,15 +60,22 @@ public class Flee : MonoBehaviour {
             {
                 if (Vector3.Angle(newDirection, fleeingDirection.normalized) > seeingAngle / 2)
                 {
-                    PickDestination(fleeingDistance, seeingAngle);
+                Debug.Log("Again");
+                    return PickFleeingDestination(fleeingDistance, seeingAngle);
                 }
                 else
                 {
-                    return agent.CalculatePath(destination, new NavMeshPath()) ? destination : PickDestination(fleeingDistance, seeingAngle);
+                    return agent.CalculatePath(destination, new NavMeshPath()) ? destination : PickFleeingDestination(fleeingDistance, seeingAngle);
                 }
 
             }
         return agent.destination;
+    }
+
+    public Vector3 PickDestination(float radius)
+    {
+        Vector3 destination = gameObject.transform.position + new Vector3(Random.Range(-radius, radius), 0, Random.Range(-radius, radius));
+        return agent.CalculatePath(destination, new NavMeshPath()) != null ? destination : PickDestination(radius);
     }
 
 
@@ -75,9 +85,8 @@ public class Flee : MonoBehaviour {
         Vector3 fleeingDirection = (transform.position - Player.transform.position);
         if (fleeingDirection.magnitude < fleeingDistance)
         {
-            agent.destination = PickDestination(fleeingDistance, seeingAngle);
+            agent.destination = PickFleeingDestination(fleeingDistance, seeingAngle);
         }
-        Task.current.Succeed();
     }
 
     private bool IsInVision(float seeingDistance, float seeingAngle)

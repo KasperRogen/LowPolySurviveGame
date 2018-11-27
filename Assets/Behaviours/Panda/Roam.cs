@@ -36,6 +36,6 @@ public class Roam : MonoBehaviour {
     public Vector3 PickDestination(float radius)
     {
         Vector3 destination = gameObject.transform.position + new Vector3(Random.Range(-radius, radius), 0, Random.Range(-radius, radius));
-            return agent.CalculatePath(destination, new NavMeshPath()) != null ? destination : PickDestination(radius);
+            return agent.CalculatePath(destination, new NavMeshPath()) ? destination : PickDestination(radius);
     }
 }

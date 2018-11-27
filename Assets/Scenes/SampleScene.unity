@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,21 +287,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 170076733}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dca9ad9fe2fa484294c1da7cf3d8cc6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5c8c58fc619daa44dbf1e377436eb56a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayDuration: 10
-  <isNight>k__BackingField: 0
-  dayColor:
-    r: 0
-    g: 0
-    b: 0
-    a: 0
-  nightColor:
-    r: 0.1
-    g: 0.1
-    b: 0.1
-    a: 0.1
+  night: 0
 --- !u!1 &184999008
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1511,7 @@ GameObject:
   - component: {fileID: 2073894919}
   - component: {fileID: 2073894927}
   - component: {fileID: 2073894928}
+  - component: {fileID: 2073894929}
   m_Layer: 0
   m_Name: NavmeshAgent (BB)
   m_TagString: Untagged
@@ -1654,7 +1644,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calories: 100
-  maxCalories: 100
+  maxCalories: 1000
   energy: 0
   maxEnergy: 0
   maxHealth: 0
@@ -1702,6 +1692,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 345912227}
   agent: {fileID: 2073894920}
+--- !u!114 &2073894929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073894918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3dc98094925d048a27fe082652da4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentFood: {fileID: 0}
+  animal: {fileID: 2073894925}
+  agent: {fileID: 2073894920}
+  biteSize: 5
 --- !u!1 &2093922253 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100000, guid: f364f00c622818a4faa92b0f8562e107,

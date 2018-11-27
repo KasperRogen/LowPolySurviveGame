@@ -1,0 +1,25 @@
+tree("Root")
+	repeat
+		fallback
+			sequence 
+				PlayerCloseAndInSight(10.0, 180.0)
+				while
+					PlayerClose(20.0)
+					FleeTask(25.0, 90.0)
+			while
+				IsNight
+				Wait 1.0
+			sequence 
+				Hungry
+				IsFoodClose(30.0)
+				SeekFood(30.0)
+				while
+					IsFoodClose(1.0)
+					sequence
+						not
+							PlayerCloseAndInSight(10.0, 180.0)
+						Eat
+						Wait 0.1
+			random
+				RoamTask
+				Wait 1.0
