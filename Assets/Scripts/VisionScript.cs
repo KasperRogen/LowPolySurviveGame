@@ -10,7 +10,8 @@ public class VisionScript : MonoBehaviour {
     [SerializeField] public float hearingDistance;
     [SerializeField] private float smellingDistance;
 
-
+    [Tooltip("Draw the vision of the animal")]
+    [SerializeField] private bool DrawGizmos;
 
     private void Start()
     {
@@ -97,17 +98,18 @@ public class VisionScript : MonoBehaviour {
 
     private void OnDrawGizmosSelected()
     {
-        Color c = new Color(0, 0, 1, 0.3f);
+        if (DrawGizmos) { 
+            Color c = new Color(0, 0, 1, 0.3f);
 
-        float detectionAngle = seeingAngle;
+            float detectionAngle = seeingAngle;
 
-        UnityEditor.Handles.color = c;
-        Vector3 rotatedForward = Quaternion.Euler(0, -detectionAngle * 0.5f, 0) * transform.forward;
-        UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.up, rotatedForward, detectionAngle, seeingDistance);
+            UnityEditor.Handles.color = c;
+            Vector3 rotatedForward = Quaternion.Euler(0, -detectionAngle * 0.5f, 0) * transform.forward;
+            UnityEditor.Handles.DrawSolidArc(transform.position, Vector3.up, rotatedForward, detectionAngle, seeingDistance);
 
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, hearingDistance);
-
+            Gizmos.color = Color.green;
+            Gizmos.DrawWireSphere(transform.position, hearingDistance);
+        }
     }
 
 

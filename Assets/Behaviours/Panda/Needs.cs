@@ -9,6 +9,7 @@ public class Needs : MonoBehaviour {
     [SerializeField] private GameObject currentFood;
     [SerializeField] private AnimalScript animal;
     [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
     [Tooltip("The amount of food an animal eats per bite")]
     [SerializeField] private float biteSize;
 	// Use this for initialization
@@ -53,8 +54,9 @@ public class Needs : MonoBehaviour {
             Vector3.Distance(transform.position, coll1.transform.position) <
             Vector3.Distance(transform.position, coll2.transform.position) ? coll1 : coll2).gameObject;
 
+
         currentFood = target;
-        agent.destination = target.transform.position;
+        agent.destination = target.transform.position + (transform.position - target.transform.position).normalized;
 
         Task.current.Succeed();
     }
@@ -73,12 +75,15 @@ public class Needs : MonoBehaviour {
     [Task]
     void Eat()
     {
-        Resource resource = currentFood.GetComponent<Resource>();
+        Debug.Log("GINGER BEER");
+        animator.SetBool("Eating", true);
+           Resource resource = currentFood.GetComponent<Resource>();
         if (resource != null && resource.type == Resource.ResourceType.FOOD)
         {
             if(animal.calories >= animal.maxCalories)
             {
                 Task.current.Succeed();
+                animator.SetBool("Eating", false);
                 return;
             }
 
@@ -92,6 +97,7 @@ public class Needs : MonoBehaviour {
                 animal.calories += resource.resourceAmount;
                 resource.resourceAmount = 0;
                 Destroy(resource.gameObject);
+                animator.SetBool("Eating", false);
                 Task.current.Succeed();
             }
         }
@@ -121,6 +127,7 @@ public class Needs : MonoBehaviour {
         }
 
         Task.current.Fail();
+        animator.SetBool("Eating", false);
     }
 
     [Task]

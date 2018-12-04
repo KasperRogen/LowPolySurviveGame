@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AnimalScript : MonoBehaviour {
 
@@ -9,9 +10,9 @@ public class AnimalScript : MonoBehaviour {
 
     [SerializeField] float energy;
     [SerializeField] float maxEnergy;
-
+    [SerializeField] Animator animator;
     [SerializeField] float maxHealth;
-
+    [SerializeField] NavMeshAgent agent; 
     [SerializeField] private GameObject Player;
 
 
@@ -48,9 +49,9 @@ public class AnimalScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-		
-	}
+    void FixedUpdate () {
+        animator.SetFloat("Speed", agent.velocity.magnitude);
+    }
 
 
 
@@ -60,8 +61,6 @@ public class AnimalScript : MonoBehaviour {
 
 
 
-
-        
         IsHungry = (calories < maxCalories * 0.5f);
 
     }

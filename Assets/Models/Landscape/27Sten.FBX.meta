@@ -1,0 +1,225 @@
+fileFormatVersion: 2
+guid: 2d2e99bc232466e4fa08fd4c4ee25257
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Sten001
+    100004: Sten002
+    100006: Sten003
+    100008: Sten004
+    100010: Sten005
+    100012: Sten006
+    100014: Sten007
+    100016: Sten008
+    100018: Sten009
+    100020: Sten010
+    100022: Sten011
+    100024: Sten012
+    100026: Sten013
+    100028: Sten014
+    100030: Sten015
+    100032: Sten016
+    100034: Sten017
+    100036: Sten018
+    100038: Sten019
+    100040: Sten020
+    100042: Sten021
+    100044: Sten022
+    100046: Sten023
+    100048: Sten024
+    100050: Sten025
+    100052: Sten026
+    100054: Sten027
+    400000: //RootNode
+    400002: Sten001
+    400004: Sten002
+    400006: Sten003
+    400008: Sten004
+    400010: Sten005
+    400012: Sten006
+    400014: Sten007
+    400016: Sten008
+    400018: Sten009
+    400020: Sten010
+    400022: Sten011
+    400024: Sten012
+    400026: Sten013
+    400028: Sten014
+    400030: Sten015
+    400032: Sten016
+    400034: Sten017
+    400036: Sten018
+    400038: Sten019
+    400040: Sten020
+    400042: Sten021
+    400044: Sten022
+    400046: Sten023
+    400048: Sten024
+    400050: Sten025
+    400052: Sten026
+    400054: Sten027
+    2100000: No Name
+    2300000: Sten001
+    2300002: Sten002
+    2300004: Sten003
+    2300006: Sten004
+    2300008: Sten005
+    2300010: Sten006
+    2300012: Sten007
+    2300014: Sten008
+    2300016: Sten009
+    2300018: Sten010
+    2300020: Sten011
+    2300022: Sten012
+    2300024: Sten013
+    2300026: Sten014
+    2300028: Sten015
+    2300030: Sten016
+    2300032: Sten017
+    2300034: Sten018
+    2300036: Sten019
+    2300038: Sten020
+    2300040: Sten021
+    2300042: Sten022
+    2300044: Sten023
+    2300046: Sten024
+    2300048: Sten025
+    2300050: Sten026
+    2300052: Sten027
+    3300000: Sten001
+    3300002: Sten002
+    3300004: Sten003
+    3300006: Sten004
+    3300008: Sten005
+    3300010: Sten006
+    3300012: Sten007
+    3300014: Sten008
+    3300016: Sten009
+    3300018: Sten010
+    3300020: Sten011
+    3300022: Sten012
+    3300024: Sten013
+    3300026: Sten014
+    3300028: Sten015
+    3300030: Sten016
+    3300032: Sten017
+    3300034: Sten018
+    3300036: Sten019
+    3300038: Sten020
+    3300040: Sten021
+    3300042: Sten022
+    3300044: Sten023
+    3300046: Sten024
+    3300048: Sten025
+    3300050: Sten026
+    3300052: Sten027
+    4300000: Sten001
+    4300002: Sten002
+    4300004: Sten003
+    4300006: Sten004
+    4300008: Sten005
+    4300010: Sten006
+    4300012: Sten007
+    4300014: Sten008
+    4300016: Sten009
+    4300018: Sten010
+    4300020: Sten011
+    4300022: Sten012
+    4300024: Sten013
+    4300026: Sten014
+    4300028: Sten015
+    4300030: Sten016
+    4300032: Sten017
+    4300034: Sten018
+    4300036: Sten019
+    4300038: Sten020
+    4300040: Sten021
+    4300042: Sten022
+    4300044: Sten023
+    4300046: Sten024
+    4300048: Sten025
+    4300050: Sten026
+    4300052: Sten027
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
