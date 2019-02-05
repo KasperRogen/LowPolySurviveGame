@@ -18,7 +18,7 @@ public class CameraController : MonoBehaviour
 
     private void LockCursor()
     {
-        //Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void Update()
@@ -41,5 +41,17 @@ public class CameraController : MonoBehaviour
 
     }
 
-    
+
+    //private void OnMouseDown()
+    //{
+    //    Debug.Log("YAAASS");
+    //    RaycastHit hit;
+    //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
+    //    {
+    //        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
+    //        Debug.Log("Did Hit " + hit.transform.gameObject.name);
+    //    }
+    //}
+
+
 }

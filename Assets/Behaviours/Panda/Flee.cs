@@ -29,7 +29,6 @@ public class Flee : MonoBehaviour {
             return;
         }
         Task.current.Fail();
-        Debug.Log(Vector3.Distance(transform.position, Player.transform.position));
     }
 
 
@@ -60,8 +59,7 @@ public class Flee : MonoBehaviour {
             {
                 if (Vector3.Angle(newDirection, fleeingDirection.normalized) > seeingAngle / 2)
                 {
-                Debug.Log("Again");
-                    return PickFleeingDestination(fleeingDistance, seeingAngle);
+                    return agent.destination;
                 }
                 else
                 {

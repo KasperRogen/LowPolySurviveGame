@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+
+    }
+
+    private void Update()
+    {
         PlayerMovement();
 
 
@@ -67,18 +72,13 @@ public class PlayerController : MonoBehaviour {
 
         float deltaMovement = 0;
 
-        for (int i = 0; i < movementHistory.Count-1; i++)
+        for (int i = 0; i < movementHistory.Count - 1; i++)
         {
             deltaMovement += Vector3.Distance(movementHistory[i], movementHistory[i + 1]);
         }
 
         NoiseManager.SendNoise(transform.position, deltaMovement * 10);
-    }
 
-    private void Update()
-    {
-
-        
         Jump();
         
         

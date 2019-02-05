@@ -75,7 +75,6 @@ public class Needs : MonoBehaviour {
     [Task]
     void Eat()
     {
-        Debug.Log("GINGER BEER");
         animator.SetBool("Eating", true);
            Resource resource = currentFood.GetComponent<Resource>();
         if (resource != null && resource.type == Resource.ResourceType.FOOD)
