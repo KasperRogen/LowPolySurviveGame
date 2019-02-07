@@ -2,12 +2,16 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
     Item item;
     public Image icon;
     public Inventory inventory;
+
+
+    GameObject currentUI;
+    Vector3 oldPosition;
 
     private bool isGrabbed = false;
 
@@ -41,12 +45,32 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         isGrabbed = true;   
     }
 
+    
+
     public void OnPointerUp(PointerEventData eventData)
     {
+        Debug.Log("Dropping " + currentUI.name);
         isGrabbed = false;
-        if (!EventSystem.current.IsPointerOverGameObject())
+        if (currentUI == null) { 
+            Debug.Log("False");
             inventory.Remove(item);
-        else
-            inventory.OnItemChangedCallback.Invoke();
+            icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
+        }
+        else {
+            icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
+            Debug.Log("True");
+        }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Debug.Log(eventData.pointerEnter.gameObject);
+        currentUI = eventData.pointerEnter.gameObject;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Debug.Log("Exited");
+        currentUI = null;
     }
 }
