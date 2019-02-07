@@ -2,82 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
 
-    public int slotCount;
+    public List<Item> items = new List<Item>();
+    public int space;
 
-    public GameObject[] slots;
 
-	// Use this for initialization
-	void Start () {
-        slots = new GameObject[slotCount];
-	}
-	
+    public delegate void OnItemChanged();
+    public OnItemChanged OnItemChangedCallback;
 
-    public void AddItem(GameObject ToAdd)
+
+
+
+    public bool Add(Item item)
     {
-        InventoryItem item = ToAdd.GetComponent<InventoryItem>();
-
-        if(item.ItemType == InventoryItem.InventoryItemType.stackable)
+        if(items.Count >= space)
         {
-            foreach(GameObject GO in slots)
-            {
-                if (GO == null)
-                    continue;
-
-                InventoryItem currentItem = GO.GetComponent<InventoryItem>();
-
-                if(currentItem.ItemName == item.ItemName && currentItem.ItemStackSize < currentItem.MaxItemStackSize)
-                {
-                    int deltaStackSize = currentItem.MaxItemStackSize - currentItem.ItemStackSize;
-                    if(item.ItemStackSize > deltaStackSize)
-                    {
-                        currentItem.ItemStackSize += deltaStackSize;
-                        item.ItemStackSize -= deltaStackSize;
-                    } else
-                    {
-                        currentItem.ItemStackSize += item.ItemStackSize;
-                        Destroy(ToAdd);
-                        return;
-                    }
-                }
-            }
+            Debug.Log("Not enough room in inventory.");
+            return false;
         }
 
-        for(int i = 0; i < slotCount; i++)
-        {
-            if(slots[i] == null)
-            {
-                slots[i] = ToAdd;
-                ToAdd.transform.parent = transform;
-                ToAdd.SetActive(false);
-                return;
-            }
-        }
+        if (item.isDefaultItem == false)
+        items.Add(item);
 
+        if (OnItemChangedCallback != null)
+            OnItemChangedCallback.Invoke();
 
+        return true;
     }
 
-    public void DropItem(int index)
+    public void Remove(Item item)
     {
-        InventoryItem item = slots[index].GetComponent<InventoryItem>();
-        GameObject GO = Instantiate(item.gameObject, transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
-        GO.GetComponent<InventoryItem>().ItemStackSize = 1;
-        GO.transform.parent = null;
-        GO.SetActive(true);
-        GO.name = item.ItemName;
-        GO.transform.localScale = Vector3.one;
+        items.Remove(item);
 
-        if (--item.ItemStackSize == 0)
-        {
-            Destroy(slots[index]);
-            slots[index] = null;
-        }
+        if(OnItemChangedCallback != null)
+            OnItemChangedCallback.Invoke();
     }
 
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
+
 }

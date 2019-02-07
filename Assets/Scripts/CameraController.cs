@@ -12,17 +12,24 @@ public class CameraController : MonoBehaviour
 
     private void Awake()
     {
-        LockCursor();
+
+        PlayerScript.OnUIToggledCallback += ToggleCursorLock;
+        Cursor.lockState = CursorLockMode.Locked;
         xAxisClamp = 0;
     }
 
-    private void LockCursor()
+    private void ToggleCursorLock()
     {
-        Cursor.lockState = CursorLockMode.Locked;
+        if (Cursor.lockState == CursorLockMode.Locked)
+            Cursor.lockState = CursorLockMode.None;
+        else if (Cursor.lockState == CursorLockMode.None)
+            Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     public void Update()
     {
+        if(Cursor.lockState == CursorLockMode.Locked)
         CameraRotation();
     }
 
@@ -41,17 +48,6 @@ public class CameraController : MonoBehaviour
 
     }
 
-
-    //private void OnMouseDown()
-    //{
-    //    Debug.Log("YAAASS");
-    //    RaycastHit hit;
-    //    if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity))
-    //    {
-    //        Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-    //        Debug.Log("Did Hit " + hit.transform.gameObject.name);
-    //    }
-    //}
 
 
 }
