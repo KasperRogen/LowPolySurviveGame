@@ -2,16 +2,13 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerEnterHandler, IPointerExitHandler
+public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
 
     Item item;
     public Image icon;
     public Inventory inventory;
 
-
-    GameObject currentUI;
-    Vector3 oldPosition;
 
     private bool isGrabbed = false;
 
@@ -38,39 +35,29 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             icon.rectTransform.position = Input.mousePosition;
         }
+
+
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        isGrabbed = true;   
+        isGrabbed = true;
+        icon.raycastTarget = false;
     }
 
     
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Debug.Log("Dropping " + currentUI.name);
         isGrabbed = false;
-        if (currentUI == null) { 
-            Debug.Log("False");
+        if (!EventSystem.current.IsPointerOverGameObject()) { 
             inventory.Remove(item);
             icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
         }
         else {
             icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
-            Debug.Log("True");
         }
+        icon.raycastTarget = true;
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log(eventData.pointerEnter.gameObject);
-        currentUI = eventData.pointerEnter.gameObject;
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("Exited");
-        currentUI = null;
-    }
 }
