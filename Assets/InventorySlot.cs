@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 {
 
     Item item;
+    public int index;
     public Image icon;
     public Inventory inventory;
 
@@ -31,6 +33,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void Update()
     {
+
         if (isGrabbed)
         {
             icon.rectTransform.position = Input.mousePosition;
@@ -49,14 +52,39 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
+
+        PointerEventData pointer = new PointerEventData(EventSystem.current);
+        pointer.position = Input.mousePosition;
+
+        List<RaycastResult> raycastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(pointer, raycastResults);
+
+        InventorySlot slot = null;
+
+        foreach(RaycastResult result in raycastResults)
+        {
+            if(result.gameObject.GetComponent<InventorySlot>() != null)
+            {
+                slot = result.gameObject.GetComponent<InventorySlot>();
+            }
+        }
+
         isGrabbed = false;
-        if (!EventSystem.current.IsPointerOverGameObject()) { 
-            inventory.Remove(item);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            inventory.RemoveAtIndex(index);
             icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
         }
-        else {
-            icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
+
+        else if (slot != null && slot.item == null)
+        {
+            slot.inventory.AddAtIndex(item, slot.index);
+
+            inventory.RemoveAtIndex(index);
         }
+
+        icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
+
         icon.raycastTarget = true;
     }
 

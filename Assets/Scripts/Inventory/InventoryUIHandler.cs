@@ -16,25 +16,40 @@ public class InventoryUIHandler : MonoBehaviour
 
         slots = itemsParent.GetComponentsInChildren<InventorySlot>();
 
-        foreach (InventorySlot slot in slots)
+        for (int i = 0; i < slots.Length; i++)
         {
-            slot.GetComponent<InventorySlot>().inventory = inventory;
+            InventorySlot slot = slots[i].GetComponent<InventorySlot>();
+            slot.inventory = inventory;
+            slot.index = i;
         }
     }
 
     protected void UpdateUI()
     {
+        //for (int i = 0; i < slots.Length; i++)
+        //{
+
+        //    if (i < inventory.items.Count)
+        //    {
+        //        slots[i].AddItem(inventory.items[i]);
+        //    }
+        //    else
+        //    {
+        //        slots[i].ClearSlot();
+        //    }
+        //}
+
+
+
+
         for (int i = 0; i < slots.Length; i++)
         {
-            if (i < inventory.items.Count)
-            {
+            if (inventory.items[i] != null)
                 slots[i].AddItem(inventory.items[i]);
-            }
             else
-            {
                 slots[i].ClearSlot();
-            }
         }
+
     }
 
 }

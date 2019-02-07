@@ -13,31 +13,77 @@ public class Inventory : MonoBehaviour
     public OnItemChanged OnItemChangedCallback;
 
 
+    public void Start()
+    {
+        for (int i = 0; i < space; i++)
+            items.Add(null);
+    }
 
 
     public bool Add(Item item)
     {
-        if(items.Count >= space)
+
+        for (int i = 0; i < space; i++)
         {
-            Debug.Log("Not enough room in inventory.");
-            return false;
+            if (items[i] == null)
+            {
+                items[i] = item;
+                if (OnItemChangedCallback != null)
+                    OnItemChangedCallback.Invoke();
+                return true;
+            }
         }
 
-        if (item.isDefaultItem == false)
-        items.Add(item);
+        Debug.Log("Not enough room in inventory.");
+        return false;
+    }
+
+
+
+    public bool AddAtIndex(Item item, int index)
+    {
+
+        if(items[index] != null)
+        {
+            return false;
+        } else
+        {
+            items[index] = item;
+            if (OnItemChangedCallback != null)
+                OnItemChangedCallback.Invoke();
+            return true;
+        }
+    }
+
+
+
+
+
+    public void Remove(Item item)
+    {
+        for(int i = 0; i < space; i++)
+        {
+            if(items[i] == item)
+            {
+                items[i] = null;
+
+                if (OnItemChangedCallback != null)
+                    OnItemChangedCallback.Invoke();
+            }
+        }
+
+
+    }
+
+
+    public void RemoveAtIndex(int index)
+    {
+
+        items[index] = null;
 
         if (OnItemChangedCallback != null)
             OnItemChangedCallback.Invoke();
 
-        return true;
-    }
-
-    public void Remove(Item item)
-    {
-        items.Remove(item);
-
-        if(OnItemChangedCallback != null)
-            OnItemChangedCallback.Invoke();
     }
 
 
