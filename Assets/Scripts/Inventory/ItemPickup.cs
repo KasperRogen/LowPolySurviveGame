@@ -17,9 +17,20 @@ public class ItemPickup : Interactable
     {
 
         Debug.Log("Picking up " + item.name);
+
+        if (item.pickupToActiveInventory)
+        {
+            if(PlayerScript.activeInventory.Add(item))
+            {
+                Destroy(gameObject);
+                return;
+            }
+        }
+
         if (PlayerScript.playerInventory.Add(item))
         {
             Destroy(gameObject);
+            return;
         }
 
 
