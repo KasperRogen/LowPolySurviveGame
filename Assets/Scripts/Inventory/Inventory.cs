@@ -65,6 +65,8 @@ public class Inventory : MonoBehaviour
         {
             if(items[i] == item)
             {
+
+                items[i].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
                 items[i] = null;
 
                 if (OnItemChangedCallback != null)
@@ -78,7 +80,7 @@ public class Inventory : MonoBehaviour
 
     public void RemoveAtIndex(int index)
     {
-
+        items[index].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
         items[index] = null;
 
         if (OnItemChangedCallback != null)

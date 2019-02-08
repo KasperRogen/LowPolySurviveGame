@@ -9,7 +9,12 @@ public class Item : ScriptableObject
     public bool pickupToActiveInventory = false;
     public Sprite icon = null;
     public bool isDefaultItem = false;
+    public GameObject Prefab;
 
+    public void Instantiate(Vector3 location, Quaternion rotation)
+    {
+        GameObject GO = Instantiate(Prefab, location, rotation);
+    }
 
 }
 

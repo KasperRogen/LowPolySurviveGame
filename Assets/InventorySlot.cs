@@ -44,15 +44,17 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        gameObject.AddComponent<CanvasGroup>().alpha = 2;
         isGrabbed = true;
         icon.raycastTarget = false;
+        
     }
 
     
 
     public void OnPointerUp(PointerEventData eventData)
     {
-
+        Destroy(gameObject.GetComponent<CanvasGroup>());
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = Input.mousePosition;
 
