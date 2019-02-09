@@ -70,7 +70,32 @@ ModelImporter:
     7400020: End_Eat
     9500000: //RootNode
     13700000: Box020
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #26'
+    second: {fileID: 2100000, guid: 720cbab2c8f68534fbbb1beacdb7d9e1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #27'
+    second: {fileID: 2100000, guid: 4a75525e4d1229b4c824794e60ac2141, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #28'
+    second: {fileID: 2100000, guid: 431db7beda897eb47bd980f645126bbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #29'
+    second: {fileID: 2100000, guid: 68f55af2760000d41abc2e596382f70b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 'Material #89'
+    second: {fileID: 2100000, guid: 64ae407c630b50d469fd589162346f70, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -412,6 +437,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
+    useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
     importCameras: 1
@@ -436,6 +462,9 @@ ModelImporter:
     normalImportMode: 0
     tangentImportMode: 3
     normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
