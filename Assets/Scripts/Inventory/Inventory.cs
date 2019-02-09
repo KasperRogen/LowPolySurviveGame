@@ -80,7 +80,6 @@ public class Inventory : MonoBehaviour
 
     public void RemoveAtIndex(int index)
     {
-        items[index].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
         items[index] = null;
 
         if (OnItemChangedCallback != null)
