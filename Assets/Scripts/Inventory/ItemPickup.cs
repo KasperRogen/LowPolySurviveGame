@@ -25,6 +25,11 @@ public class ItemPickup : Interactable
                 Destroy(gameObject);
                 return;
             }
+            else if (PlayerScript.playerInventory.Add(item))
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
 
         if (PlayerScript.playerInventory.Add(item))
@@ -32,6 +37,12 @@ public class ItemPickup : Interactable
             Destroy(gameObject);
             return;
         }
+        else if (PlayerScript.activeInventory.Add(item))
+        {
+            Destroy(gameObject);
+            return;
+        }
+
 
 
     }

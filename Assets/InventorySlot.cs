@@ -44,7 +44,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        gameObject.AddComponent<CanvasGroup>().alpha = 2;
         isGrabbed = true;
         icon.raycastTarget = false;
         
@@ -54,7 +53,6 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        Destroy(gameObject.GetComponent<CanvasGroup>());
         PointerEventData pointer = new PointerEventData(EventSystem.current);
         pointer.position = Input.mousePosition;
 
@@ -72,9 +70,11 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         }
 
         isGrabbed = false;
+
+
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            inventory.RemoveAtIndex(index);
+            inventory.RemoveAtIndex(index, true);
             icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
         }
 
@@ -82,7 +82,7 @@ public class InventorySlot : MonoBehaviour, IPointerDownHandler, IPointerUpHandl
         {
             slot.inventory.AddAtIndex(item, slot.index);
 
-            inventory.RemoveAtIndex(index);
+            inventory.RemoveAtIndex(index, false);
         }
 
         icon.rectTransform.anchoredPosition = transform.parent.GetComponent<RectTransform>().anchoredPosition;
