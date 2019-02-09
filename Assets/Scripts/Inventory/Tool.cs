@@ -15,4 +15,7 @@ public class Tool : Item
 
     public int Durability;
     public int Damage;
+
+    [Tooltip("The first person prefab, \"The hands and the axe they are holding\"")]
+    public GameObject FPPrefab;
 }
