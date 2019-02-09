@@ -57,16 +57,16 @@ public class Inventory : MonoBehaviour
 
 
 
-
-
-    public void Remove(Item item)
+    public void Remove(Item item, bool instantiate)
     {
         for(int i = 0; i < space; i++)
         {
             if(items[i] == item)
             {
+                if(instantiate)
+                    items[i].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
 
-                items[i].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
+
                 items[i] = null;
 
                 if (OnItemChangedCallback != null)
@@ -78,8 +78,11 @@ public class Inventory : MonoBehaviour
     }
 
 
-    public void RemoveAtIndex(int index)
+    public void RemoveAtIndex(int index, bool instantiate)
     {
+        if (instantiate)
+            items[index].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
+
         items[index] = null;
 
         if (OnItemChangedCallback != null)
