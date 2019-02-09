@@ -6,36 +6,67 @@ using UnityEngine.EventSystems;
 public class PlayerScript : MonoBehaviour {
 
 
-    Inventory inventory;
 
-	// Use this for initialization
-	void Start () {
-        inventory = GetComponent<Inventory>();
+    [Tooltip("The range the player can interact with- and pickup stuff")]
+    public float reachRange = 5f;
+    private Camera cam;
+    public GameObject PlayerInventoryUI;
+    bool isUIOpen = false;
+
+    [SerializeField]
+    public static Inventory playerInventory;
+    public static Inventory activeInventory;
+
+    public delegate void OnUIToggled();
+    public static OnUIToggled OnUIToggledCallback;
+
+
+    // Use this for initialization
+    void Start () {
+        playerInventory = GetComponent<PlayerInventory>();
+        activeInventory = GetComponent<ActiveInventory>();
+
+        cam = Camera.main.GetComponent<Camera>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        
+
+        if (Input.GetButtonDown("Inventory"))
         {
-            inventory.DropItem(0);
+            PlayerInventoryUI.SetActive(!PlayerInventoryUI.activeSelf);
+
+            isUIOpen = !isUIOpen;
+
+            if (OnUIToggledCallback != null)
+                OnUIToggledCallback.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            inventory.DropItem(1);
+
+
+
+        if(isUIOpen == false) {
+            RaycastHit hit;
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+            if(Physics.Raycast(ray, out hit, reachRange))
+            {
+                Interactable interact = hit.transform.GetComponent<Interactable>();
+                if (interact != null)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        Debug.Log("PickUp");
+                        interact.Interact();
+                    }
+                }
+            }
         }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            inventory.DropItem(2);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-        {
-            inventory.DropItem(3);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-        {
-            inventory.DropItem(4);
-        }
+
+
+
     }
+
 
 
     void OnGUI()

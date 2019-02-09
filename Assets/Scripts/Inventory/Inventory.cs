@@ -2,82 +2,96 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Inventory : MonoBehaviour {
+public class Inventory : MonoBehaviour
+{
 
-    public int slotCount;
+    public List<Item> items = new List<Item>();
+    public int space;
 
-    public GameObject[] slots;
 
-	// Use this for initialization
-	void Start () {
-        slots = new GameObject[slotCount];
-	}
-	
+    public delegate void OnItemChanged();
+    public OnItemChanged OnItemChangedCallback;
 
-    public void AddItem(GameObject ToAdd)
+
+    public void Start()
     {
-        InventoryItem item = ToAdd.GetComponent<InventoryItem>();
+        for (int i = 0; i < space; i++)
+            items.Add(null);
+    }
 
-        if(item.ItemType == InventoryItem.InventoryItemType.stackable)
+
+    public bool Add(Item item)
+    {
+
+        for (int i = 0; i < space; i++)
         {
-            foreach(GameObject GO in slots)
+            if (items[i] == null)
             {
-                if (GO == null)
-                    continue;
-
-                InventoryItem currentItem = GO.GetComponent<InventoryItem>();
-
-                if(currentItem.ItemName == item.ItemName && currentItem.ItemStackSize < currentItem.MaxItemStackSize)
-                {
-                    int deltaStackSize = currentItem.MaxItemStackSize - currentItem.ItemStackSize;
-                    if(item.ItemStackSize > deltaStackSize)
-                    {
-                        currentItem.ItemStackSize += deltaStackSize;
-                        item.ItemStackSize -= deltaStackSize;
-                    } else
-                    {
-                        currentItem.ItemStackSize += item.ItemStackSize;
-                        Destroy(ToAdd);
-                        return;
-                    }
-                }
+                items[i] = item;
+                if (OnItemChangedCallback != null)
+                    OnItemChangedCallback.Invoke();
+                return true;
             }
         }
 
-        for(int i = 0; i < slotCount; i++)
+        Debug.Log("Not enough room in inventory.");
+        return false;
+    }
+
+
+
+    public bool AddAtIndex(Item item, int index)
+    {
+
+        if(items[index] != null)
         {
-            if(slots[i] == null)
+            return false;
+        } else
+        {
+            items[index] = item;
+            if (OnItemChangedCallback != null)
+                OnItemChangedCallback.Invoke();
+            return true;
+        }
+    }
+
+
+
+    public void Remove(Item item, bool instantiate)
+    {
+        for(int i = 0; i < space; i++)
+        {
+            if(items[i] == item)
             {
-                slots[i] = ToAdd;
-                ToAdd.transform.parent = transform;
-                ToAdd.SetActive(false);
-                return;
+                if(instantiate)
+                    items[i].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
+
+
+                items[i] = null;
+
+                if (OnItemChangedCallback != null)
+                    OnItemChangedCallback.Invoke();
             }
         }
 
 
     }
 
-    public void DropItem(int index)
-    {
-        InventoryItem item = slots[index].GetComponent<InventoryItem>();
-        GameObject GO = Instantiate(item.gameObject, transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
-        GO.GetComponent<InventoryItem>().ItemStackSize = 1;
-        GO.transform.parent = null;
-        GO.SetActive(true);
-        GO.name = item.ItemName;
-        GO.transform.localScale = Vector3.one;
 
-        if (--item.ItemStackSize == 0)
-        {
-            Destroy(slots[index]);
-            slots[index] = null;
-        }
+    public void RemoveAtIndex(int index, bool instantiate)
+    {
+        if (instantiate)
+            items[index].Instantiate(transform.position + transform.TransformDirection(Vector3.forward), Quaternion.identity);
+
+        items[index] = null;
+
+        if (OnItemChangedCallback != null)
+            OnItemChangedCallback.Invoke();
+
     }
 
 
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
+
 }
