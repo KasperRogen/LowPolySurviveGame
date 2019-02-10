@@ -87,18 +87,6 @@ public class BuildingManager : MonoBehaviour
                     } 
 
                 }
-
-
-
-                //float mouseX = Input.GetAxis("Mouse X");
-                //float mouseY = Input.GetAxis("Mouse Y");
-
-                //Debug.Log(Mathf.Abs(mouseX));
-
-                //if (Mathf.Abs(mouseX) >= stickTolerance || Mathf.Abs(mouseY) >= stickTolerance)
-                //{
-                //    pauseBuilding = false;
-                //}
             }
             else
             {
