@@ -59,6 +59,11 @@ public class BuildingManager : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))//Rotate
         {
+            if(previewScript == null)
+            {
+                return;
+            }
+
             if (previewScript.GetSnapped())
             {
                 StopBuilding();
@@ -156,6 +161,18 @@ public class BuildingManager : MonoBehaviour
         {
 
             previewGO.transform.position = hit.point;
+
+            SnapPoint snap = hit.transform.GetComponent<SnapPoint>();
+
+            if(snap != null && previewScript.pointsISnapTo.Contains(snap.snapPointType))
+            {
+                previewGO.transform.position = snap.transform.GetChild(0).transform.position;
+                PauseBuilding(true);
+                previewScript.isSnapped = true;
+            } else
+            {
+                previewScript.isSnapped = false;
+            }
 
         }
 

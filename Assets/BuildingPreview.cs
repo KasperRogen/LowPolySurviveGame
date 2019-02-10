@@ -16,7 +16,7 @@ public class BuildingPreview : MonoBehaviour
 
     public BuildingType buildingType;
 
-    bool isSnapped = false;
+    public bool isSnapped = false;
     MeshRenderer renderer;
     public Material goodMat;
     public Material badMat;
@@ -31,27 +31,7 @@ public class BuildingPreview : MonoBehaviour
         renderer = GetComponent<MeshRenderer>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
-
-
-
-        if (isFoundation)
-        {
-            isSnapped = true;
-        }
-        ChangeColor();
-
-
-
-
-
-
-
-
-    }
 
     public bool GetSnapped()
     {
@@ -78,28 +58,50 @@ public class BuildingPreview : MonoBehaviour
         }
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    // Update is called once per frame
+    void Update()
     {
-        SnapPoint SnapPoint = other.GetComponent<SnapPoint>();
-        if(SnapPoint != null && pointsISnapTo.Contains(SnapPoint.snapPointType)){
-            buildingManager.PauseBuilding(true);
-            transform.position = other.transform.position;
-            isSnapped = true;
-            ChangeColor();
-        }
-    }
 
 
-    private void OnTriggerExit(Collider other)
-    {
-        SnapPoint SnapPoint = other.GetComponent<SnapPoint>();
-        if (SnapPoint != null && pointsISnapTo.Contains(SnapPoint.snapPointType))
+
+
+        if (isFoundation)
         {
-            isSnapped = false;
-            ChangeColor();
+            isSnapped = true;
         }
+        ChangeColor();
+
+
+        
+
+
+
+
+
     }
+
+
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    SnapPoint SnapPoint = other.GetComponent<SnapPoint>();
+    //    if(SnapPoint != null && pointsISnapTo.Contains(SnapPoint.snapPointType)){
+    //        buildingManager.PauseBuilding(true);
+    //        transform.position = other.transform.position;
+    //        isSnapped = true;
+    //        ChangeColor();
+    //    }
+    //}
+
+
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    SnapPoint SnapPoint = other.GetComponent<SnapPoint>();
+    //    if (SnapPoint != null && pointsISnapTo.Contains(SnapPoint.snapPointType))
+    //    {
+    //        isSnapped = false;
+    //        ChangeColor();
+    //    }
+    //}
 
 
 }
