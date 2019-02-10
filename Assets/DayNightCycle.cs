@@ -51,7 +51,8 @@ public class DayNightCycle : MonoBehaviour
         sun.intensity = sunInitialIntensity * intensityMultiplier;
 
         float delta = 0.25f - Mathf.Abs(0.5f - currentTimeOfDay);
-        if (Mathf.Abs(delta) < 0.5f);
+        if (Mathf.Abs(delta) < 0.5f) ;
+
 
     }
 
