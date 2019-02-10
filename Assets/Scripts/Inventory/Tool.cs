@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Tool", menuName = "Inventory/Tool")]
-public class Tool : Item
+public class ItemTool : Item
 {
     public int WoodHarvestRate;
     public int WoodHarvestLoss;
