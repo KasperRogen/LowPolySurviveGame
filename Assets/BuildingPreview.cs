@@ -34,6 +34,10 @@ public class BuildingPreview : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
+
+
         if (isFoundation)
         {
             isSnapped = true;

@@ -136,10 +136,6 @@ public class BuildingManager : MonoBehaviour
     public void StopBuilding()
     {
         previewScript.Place();
-        Destroy(previewGO);
-        previewGO = null;
-        previewScript = null;
-        isBuilding = false;
     }
 
 
