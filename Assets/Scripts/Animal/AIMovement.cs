@@ -25,7 +25,7 @@ public class AIMovement : MonoBehaviour {
     Vector3 PickDestination(float radius)
     {
         Vector3 destination = transform.position + new Vector3(Random.Range(-radius, radius), 0, Random.Range(-radius, radius));
-        if (agent.CalculatePath(destination, new NavMeshPath()) != null)
+        if (agent.CalculatePath(destination, new NavMeshPath()))
             return destination;
         else
             return PickDestination(radius);

@@ -13,7 +13,7 @@ public class Item : ScriptableObject
 
     public void Instantiate(Vector3 location, Quaternion rotation)
     {
-        GameObject GO = Instantiate(Prefab, location, rotation);
+        Instantiate(Prefab, location, rotation);
     }
 
 }

@@ -1,21 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BuildingManager : MonoBehaviour
 {
-
+    Vector3 hitPoint = Vector3.zero;
 
     public List<GameObject> buildingBlocks;
 
+    [HideInInspector]
     public bool isBuilding = false;
     private bool pauseBuilding = false;
     public float stickTolerance = 1.5f;
 
     GameObject previewGO;
     BuildingPreview previewScript;
-
-    public LayerMask layerMask; 
+    
 
     public void Update()
     {
@@ -79,7 +80,7 @@ public class BuildingManager : MonoBehaviour
             {
                 RaycastHit hit;
 
-                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, layerMask.value))
+                if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, previewScript.layerMask.value))
                 {
                     if ((hit.point - previewGO.transform.position).magnitude > stickTolerance)
                     {
@@ -140,16 +141,22 @@ public class BuildingManager : MonoBehaviour
     }
 
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(hitPoint, 2);
+    }
+
+
 
     private void DoBuildRay()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, layerMask.value))
+        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, previewScript.layerMask.value))
         {
-
             previewGO.transform.position = hit.point;
-
+            hitPoint = hit.point;
+            
             SnapPoint snap = hit.transform.GetComponent<SnapPoint>();
 
             if(snap != null && previewScript.pointsISnapTo.Contains(snap.snapPointType))
@@ -159,6 +166,29 @@ public class BuildingManager : MonoBehaviour
                 previewScript.isSnapped = true;
             } else
             {
+                if (previewScript.isFoundation)
+                {
+                    Collider[] colls = Physics.OverlapSphere(hit.point, 2);
+                    
+                    string points = "";
+                    foreach (Collider coll in colls){
+                        SnapPoint snappeDoo = coll.transform.GetComponent<SnapPoint>();
+                        if(snappeDoo != null)
+                        {
+                            points += snappeDoo.snapPointType + ", ";
+                            if (previewScript.pointsISnapTo.Contains(snappeDoo.snapPointType))
+                            {
+                                previewScript.isSnapped = false;
+                                return;
+                            }
+                        }
+                    }
+                    Debug.Log(points);
+                    previewScript.isSnapped = true;
+                    return;
+                }
+
+
                 previewScript.isSnapped = false;
             }
 

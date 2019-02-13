@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8747816230029475957}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 396540557714773060}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 4100257094199717184}
   - component: {fileID: 2835093159171813241}
   - component: {fileID: 8711879492359649864}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 8531076331649499068}
   - component: {fileID: 6259656092214820672}
   - component: {fileID: 4881281114981824307}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,8 +176,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 15.14887, y: 0.10086465, z: 1}
-  m_Center: {x: -1.9953525, y: -0.015014768, z: 0}
+  m_Size: {x: 5.8120036, y: 0.10086465, z: 1}
+  m_Center: {x: -6.663797, y: -0.015014768, z: 0}
 --- !u!1 &3209858170633357902
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 1532864232232931399}
   - component: {fileID: 2483781995173603947}
   - component: {fileID: 1409018086314484694}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -235,8 +235,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 11.031547, y: 0.053722262, z: 1}
-  m_Center: {x: 3.7618291, y: -0.04870543, z: 0}
+  m_Size: {x: 2.5817318, y: 0.053722262, z: 1}
+  m_Center: {x: 7.9867387, y: -0.04870543, z: 0}
 --- !u!1 &3629460956939973599
 GameObject:
   m_ObjectHideFlags: 0
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 4902942856797548679}
   - component: {fileID: 7212420059204697602}
   - component: {fileID: 3581801542118378169}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7987440664351177462}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   - component: {fileID: 542009020257155300}
   - component: {fileID: 1884597415828627746}
   - component: {fileID: 1922053181350301307}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -493,7 +493,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 393562434889861624}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -525,7 +525,7 @@ GameObject:
   - component: {fileID: 1403341248766832784}
   - component: {fileID: 28728872065417127}
   - component: {fileID: 5685460635668765438}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -571,8 +571,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 13.495186, y: 0.117931604, z: 1}
-  m_Center: {x: -2.583778, y: -0.019601732, z: 0}
+  m_Size: {x: 3.7080872, y: 0.05210793, z: 1}
+  m_Center: {x: -7.629399, y: 0.013310105, z: 0}
 --- !u!1 &5929110068533715464
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,7 +582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7973536847892768364}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -614,7 +614,7 @@ GameObject:
   - component: {fileID: 8109477172082697674}
   - component: {fileID: 5669644349582936657}
   - component: {fileID: 5844810795548911430}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -671,7 +671,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3221747447164943436}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -701,7 +701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2346989908443952903}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -731,7 +731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9199356070208334267}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -763,7 +763,7 @@ GameObject:
   - component: {fileID: 776026475858545271}
   - component: {fileID: 3133158183656545031}
   - component: {fileID: 5577935364217111108}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Floor_SnapPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,5 +809,5 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 14.737679, y: 0.07872915, z: 1}
-  m_Center: {x: 1.7662758, y: 0, z: 0}
+  m_Size: {x: 4.5093164, y: 0.07872915, z: 1}
+  m_Center: {x: 6.880457, y: 0, z: 0}

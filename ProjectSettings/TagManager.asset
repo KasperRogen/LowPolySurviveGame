@@ -18,9 +18,9 @@ TagManager:
   - PostProcessing
   - Landscape
   - BuildingPreview
-  - 
-  - 
-  - 
+  - FoundationSnapPoint
+  - WallSnapPoint
+  - FloorSnapPoint
   - 
   - 
   - 

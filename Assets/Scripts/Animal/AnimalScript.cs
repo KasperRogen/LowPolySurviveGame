@@ -32,14 +32,9 @@ public class AnimalScript : MonoBehaviour {
     };
 
 
-    private AIMovement movement;
-    private VisionScript vision;
-
 	// Use this for initialization
 	void Start () {
-        vision = GetComponent<VisionScript>();
-        movement = GetComponent<AIMovement>();
-
+        
         AnimalController.AnimalAiUpdate += BasicNeedsUpdater;
 
         //state = AnimalStates.ROAMING;
@@ -66,51 +61,6 @@ public class AnimalScript : MonoBehaviour {
     }
 
 
-
-    //void DecideBehaviour()
-    //{
-    //    if(state != AnimalStates.FLEEING) { 
-
-    //        if(calories < maxCalories * 0.2f) { 
-
-    //                movement.SeekFood();
-
-    //        } else
-    //        {
-
-    //                movement.Roam();
-
-    //        }
-            
-    //    }
-
-
-    //    calories -= 10;
-    //}
-
-    //void AlertNoise(Vector3 position, float volume)
-    //{
-
-    //    if (Vector3.Distance(transform.position, position) < vision.hearingDistance && Vector3.Distance(transform.position, position) < volume)
-    //    {
-    //        if (state != AnimalStates.FLEEING)
-    //            AnimalController.CriticalAnimalAiUpdate += movement.Flee;
-
-    //        movement.Flee();
-    //    }
-    //}
-
-    //public void Alert()
-    //{
-
-    //    if(vision.LookFor(Player) != null)
-    //    {
-    //        if (state != AnimalStates.FLEEING)
-    //            AnimalController.CriticalAnimalAiUpdate += movement.Flee;
-
-    //        movement.Flee();
-    //    }
-    //}
-
+    
 
 }
