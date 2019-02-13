@@ -14,6 +14,8 @@ public class BuildingManager : MonoBehaviour
     private bool pauseBuilding = false;
     public float stickTolerance = 1.5f;
 
+    public LayerMask foundationLayerMask;
+
     GameObject previewGO;
     BuildingPreview previewScript;
     
@@ -154,6 +156,7 @@ public class BuildingManager : MonoBehaviour
 
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, 100f, previewScript.layerMask.value))
         {
+
             previewGO.transform.position = hit.point;
             hitPoint = hit.point;
             
@@ -168,14 +171,20 @@ public class BuildingManager : MonoBehaviour
             {
                 if (previewScript.isFoundation)
                 {
+
+                    if (((1 << hit.transform.gameObject.layer) & foundationLayerMask) != 0){
+                        Debug.Log("HERE");
+                        previewScript.isSnapped = false;
+                        return;
+                    }
+
+
                     Collider[] colls = Physics.OverlapSphere(hit.point, 2);
-                    
-                    string points = "";
+  
                     foreach (Collider coll in colls){
                         SnapPoint snappeDoo = coll.transform.GetComponent<SnapPoint>();
                         if(snappeDoo != null)
                         {
-                            points += snappeDoo.snapPointType + ", ";
                             if (previewScript.pointsISnapTo.Contains(snappeDoo.snapPointType))
                             {
                                 previewScript.isSnapped = false;
@@ -183,7 +192,6 @@ public class BuildingManager : MonoBehaviour
                             }
                         }
                     }
-                    Debug.Log(points);
                     previewScript.isSnapped = true;
                     return;
                 }

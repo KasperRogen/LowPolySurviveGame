@@ -105,13 +105,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a08af176b613bc42840c12c5795405c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSnapped: 0
   layerMask:
     serializedVersion: 2
-    m_Bits: 4919
-  buildingType: 1
-  isSnapped: 0
+    m_Bits: 21303
   goodMat: {fileID: 2100000, guid: 270850bc2d933754591f2e13ee994e87, type: 2}
   badMat: {fileID: 2100000, guid: 898ea447b3aaec94281766e034dbf203, type: 2}
+  buildingType: 1
   isFoundation: 0
   pointsISnapTo: 01000000
   BuildingBlock: {fileID: 3843785849671399871, guid: 4199d3f29701ace488c2fe6db8d151ec,

@@ -44,7 +44,7 @@ public class AnimalScript : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void FixedUpdate () {
+    void FixedUpdate () {   
         animator.SetFloat("Speed", agent.velocity.magnitude);
     }
 
